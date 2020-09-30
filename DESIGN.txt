@@ -1,0 +1,10 @@
+The purpose of this assignment is to implement a custom shell with some basic commands (and types of commands).
+
+1) Change to infinite while loop into a do while loop that ends if the first argument is "exit". I could change it so that the second argument must be null, but that doesn't seem to be how exit works normally.
+3) if the first arg is cd, then read the second argument and chdir to that string.
+2) run a for loop to test each elemet of args for the special characters >, >>, <, and | and set the switch case accordingly. If it's none, it defaults to case 2.
+4) For case 2 (and 3) you just fork and call exec in the child process with args as the parameter.
+5) For case 4 you have to close stdout and replace it with the file descriptor of the output given, and then execute the args up until the '>'. The output file is opened with create, write only, and truncate flags to match how a normal shell does it.
+6) Case 5 is the same as 5 except you open it in append mode instead of truncate.
+7) Case 6 is the same as case 4 except you replace stdin with the file descriptor.
+8) For case 7, you split the command into left and right, and then replace the stdout of the left and stdin of the right with the ends of a pipe.
